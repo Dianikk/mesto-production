@@ -8,67 +8,6 @@
   
   
   
-  <style>
-  .popup__list_type_info .popup__list-item {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 2px !important;
-    margin-bottom: 14px !important;
-  }
-  .popup__info-term {
-    font-weight: 400 !important;
-    font-size: 14px !important;
-    color: rgba(0, 0, 0, 0.5) !important;
-    margin: 0 !important;
-  }
-  .popup__info-description {
-    font-weight: 500 !important;
-    font-size: 16px !important;
-    color: #000000 !important;
-    margin: 0 !important;
-  }
-  .popup__list-item_header {
-    font-weight: 600 !important;
-    font-size: 15px !important;
-    color: #000000 !important;
-    margin: 14px 0 8px 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-  }
-  .popup__list_type_users {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-  }
-  .popup__list_type_users .popup__list-item {
-    list-style: none !important;
-  }
-  .popup__list-item_type_user {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    list-style: none !important;
-  }
-  .popup__list-item_type_avatar {
-    width: 28px !important;
-    height: 28px !important;
-    border-radius: 50% !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-color: #e8e8e8 !important;
-    flex-shrink: 0 !important;
-  }
-  .popup__list-item_type_name {
-    font-size: 14px !important;
-    font-weight: 400 !important;
-    color: #000000 !important;
-    white-space: nowrap !important;
-  }
-  </style>
   <script type="module" crossorigin src="./assets/index-aa64593e.js"></script>
   <link rel="stylesheet" href="./assets/index-24f9597c.css">
 </head>
@@ -235,7 +174,6 @@
     </div>
   </div>
 
-  <!-- ✅ РАСКОММЕНТИРОВАНО: Модальное окно подтверждения удаления -->
   <div class="popup popup_type_remove-card popup_is-animated">
     <div class="popup__content popup__content_content_form">
       <button class="popup__close" type="button" aria-label="Закрыть модальное окно"></button>
@@ -249,6 +187,7 @@
   <div class="popup popup_type_info popup_is-animated">
     <div class="popup__content popup__content_content_info">
       <button class="popup__close" type="button" aria-label="Закрыть модальное окно"></button>
+      <h2 class="popup__title">Информация о карточке</h2>
       <div class="popup__info">
         <ul class="popup__list popup__list_type_info"></ul>
         <ul class="popup__list popup__list_type_users"></ul>
@@ -257,16 +196,16 @@
   </div>
 
   <template id="popup-info-definition-template">
-    <li class="popup__list-item" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin-bottom: 12px;">
-      <p class="popup__info-term" style="font-weight: 400; font-size: 14px; color: rgba(0, 0, 0, 0.5); margin: 0;"></p>
-      <p class="popup__info-description" style="font-weight: 500; font-size: 16px; color: #000000; margin: 0;"></p>
+    <li class="popup__list-item">
+      <p class="popup__info-term"></p>
+      <p class="popup__info-description"></p>
     </li>
   </template>
 
   <template id="popup-info-user-preview-template">
-    <li class="popup__list-item popup__list-item_type_user" style="display: flex; align-items: center; gap: 8px; list-style: none; margin-bottom: 4px;">
-      <span class="popup__list-item popup__list-item_type_avatar" style="width: 28px; height: 28px; border-radius: 50%; background-size: cover; background-position: center; background-color: #e8e8e8; flex-shrink: 0;"></span>
-      <span class="popup__list-item popup__list-item_type_name" style="font-size: 14px; font-weight: 400; color: #000000;"></span>
+    <li class="popup__list-item popup__list-item_type_user">
+      <span class="popup__list-item popup__list-item_type_avatar"></span>
+      <span class="popup__list-item popup__list-item_type_name"></span>
     </li>
   </template>
 
