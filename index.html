@@ -66,8 +66,9 @@
     font-size: 14px !important;
     font-weight: 400 !important;
     color: #000000 !important;
+    white-space: nowrap !important;
   }
-</style>
+  </style>
   <script type="module" crossorigin src="./assets/index-15bd8a16.js"></script>
   <link rel="stylesheet" href="./assets/index-a07ea107.css">
 </head>
@@ -234,6 +235,7 @@
     </div>
   </div>
 
+  <!-- ✅ РАСКОММЕНТИРОВАНО: Модальное окно подтверждения удаления -->
   <div class="popup popup_type_remove-card popup_is-animated">
     <div class="popup__content popup__content_content_form">
       <button class="popup__close" type="button" aria-label="Закрыть модальное окно"></button>
@@ -254,19 +256,19 @@
     </div>
   </div>
 
-<template id="popup-info-definition-template">
-  <li class="popup__list-item" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin-bottom: 12px;">
-    <p class="popup__info-term" style="font-weight: 400; font-size: 14px; color: rgba(0, 0, 0, 0.5); margin: 0;"></p>
-    <p class="popup__info-description" style="font-weight: 500; font-size: 16px; color: #000000; margin: 0;"></p>
-  </li>
-</template>
+  <template id="popup-info-definition-template">
+    <li class="popup__list-item" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin-bottom: 12px;">
+      <p class="popup__info-term" style="font-weight: 400; font-size: 14px; color: rgba(0, 0, 0, 0.5); margin: 0;"></p>
+      <p class="popup__info-description" style="font-weight: 500; font-size: 16px; color: #000000; margin: 0;"></p>
+    </li>
+  </template>
 
- <template id="popup-info-user-preview-template">
-  <li class="popup__list-item popup__list-item_type_user" style="display: flex; align-items: center; gap: 8px; list-style: none; margin-bottom: 4px;">
-    <span class="popup__list-item popup__list-item_type_avatar" style="width: 28px; height: 28px; border-radius: 50%; background-size: cover; background-position: center; background-color: #e8e8e8; flex-shrink: 0;"></span>
-    <span class="popup__list-item popup__list-item_type_name" style="font-size: 14px; font-weight: 400; color: #000000;"></span>
-  </li>
-</template>
+  <template id="popup-info-user-preview-template">
+    <li class="popup__list-item popup__list-item_type_user" style="display: flex; align-items: center; gap: 8px; list-style: none; margin-bottom: 4px;">
+      <span class="popup__list-item popup__list-item_type_avatar" style="width: 28px; height: 28px; border-radius: 50%; background-size: cover; background-position: center; background-color: #e8e8e8; flex-shrink: 0;"></span>
+      <span class="popup__list-item popup__list-item_type_name" style="font-size: 14px; font-weight: 400; color: #000000;"></span>
+    </li>
+  </template>
 
   
 </body>
