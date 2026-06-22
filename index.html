@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesto</title>
+  
+  
+  
+  
+  <style>
+  .popup__list_type_info .popup__list-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+    margin-bottom: 14px !important;
+  }
+  .popup__info-term {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    color: rgba(0, 0, 0, 0.5) !important;
+    margin: 0 !important;
+  }
+  .popup__info-description {
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    color: #000000 !important;
+    margin: 0 !important;
+  }
+  .popup__list-item_header {
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    color: #000000 !important;
+    margin: 14px 0 8px 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  .popup__list_type_users {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  .popup__list_type_users .popup__list-item {
+    list-style: none !important;
+  }
+  .popup__list-item_type_user {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    list-style: none !important;
+  }
+  .popup__list-item_type_avatar {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-color: #e8e8e8 !important;
+    flex-shrink: 0 !important;
+  }
+  .popup__list-item_type_name {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #000000 !important;
+  }
+</style>
+  <script type="module" crossorigin src="./assets/index-868ab08b.js"></script>
+  <link rel="stylesheet" href="./assets/index-242ac8ec.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header page__section">
+      <img
+        class="header__logo"
+        src="./assets/logo-4ab64560.svg"
+        alt="Логотип Mesto"
+      />
+    </header>
+
+    <main class="content page__content">
+      <section class="profile page__section">
+        <div class="profile__image">
+          <button class="profile__image-edit-button" type="button" aria-label="Редактировать аватар">
+            <img src="./assets/edit-icon-4d720907.svg" alt="Изменить аватар" />
+          </button>
+        </div>
+
+        <div class="profile__info">
+          <div class="profile__info-wrapper">
+            <h1 class="profile__title"></h1>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать профиль">
+              <img src="./assets/edit-icon-4d720907.svg" alt="Редактировать" />
+            </button>
+          </div>
+          <p class="profile__description"></p>
+        </div>
+
+        <button class="profile__add-button" type="button" aria-label="Добавить карточку">
+          <img src="./assets/add-icon-ecfe910a.svg" alt="Добавить" />
+        </button>
+      </section>
+
+      <section class="places page__section">
+        <ul class="places__list">
+        </ul>
+      </section>
+
+    </main>
+
+    <footer class="footer page__section">
+      <p class="footer__copyright">&copy; 2024 Mesto</p>
+    </footer>
+  </div>
+
+  <template id="card-template">
+    <li class="places__item">
+      <article class="card">
+        <div class="card__control">
+          <button class="card__control-button card__control-button_type_info" type="button" aria-label="Информация о карточке"></button>
+        </div>
+        <img class="card__image" src="#" alt="Изображение карточки" />
+        <div class="card__description">
+          <h2 class="card__title">Название</h2>
+          <div class="card__like-container">
+            <button class="card__like-button" type="button" aria-label="Поставить лайк"></button>
+            <span class="card__like-count">0</span>
+          </div>
+        </div>
+        <button class="card__delete-button" type="button" aria-label="Удалить карточку"></button>
+      </article>
+    </li>
+  </template>
+
+  <div class="popup popup_type_edit popup_is-animated">
+    <div class="popup__content popup__content_content_form">
+      <button class="popup__close" type="button" aria-label="Закрыть модальное окно"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="edit-profile" novalidate>
+        <label class="popup__label">
+          <input
+            class="popup__input popup__input_type_name"
+            type="text"
+            id="name-input"
+            name="name"
+            placeholder="Имя"
+            minlength="2"
+            maxlength="40"
+            required
+          />
+          <span class="popup__error name-input-error"></span>
+        </label>
+        <label class="popup__label">
+          <input
+            class="popup__input popup__input_type_description"
+            type="text"
+            id="description-input"
+            name="description"
+            placeholder="О себе"
+            minlength="2"
+            maxlength="200"
+            required
+          />
+          <span class="popup__error description-input-error"></span>
+        </label>
+        <button class="popup__button popup__button_disabled" type="submit" disabled>Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_type_new-card popup_is-animated">
+    <div class="popup__content popup__content_content_form">
+      <button class="popup__close" type="button" aria-label="Закрыть модальное окно"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" name="new-place" novalidate>
+        <label class="popup__label">
+          <input
+            class="popup__input popup__input_type_card-name"
+            type="text"
+            id="card-name-input"
+            name="name"
+            placeholder="Название"
+            minlength="2"
+            maxlength="30"
+            required
+          />
+          <span class="popup__error card-name-input-error"></span>
+        </label>
+        <label class="popup__label">
+          <input
+            class="popup__input popup__input_type_url"
+            type="url"
+            id="card-link-input"
+            name="link"
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span class="popup__error card-link-input-error"></span>
+        </label>
+        <button class="popup__button popup__button_disabled" type="submit" disabled>Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_type_image popup_is-animated">
+    <div class="popup__content popup__content_content_image">
+      <button class="popup__close" type="button" aria-label="Закрыть модальное окно"></button>
+      <img class="popup__image" src="#" alt="Увеличенное изображение" />
+      <p class="popup__caption"></p>
+    </div>
+  </div>
+
+  <div class="popup popup_type_avatar popup_is-animated">
+    <div class="popup__content popup__content_content_form">
+      <button class="popup__close" type="button" aria-label="Закрыть модальное окно"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form" name="avatar" novalidate>
+        <label class="popup__label">
+          <input
+            class="popup__input popup__input_type_avatar"
+            type="url"
+            id="avatar-input"
+            name="avatar"
+            placeholder="Ссылка на аватар"
+            required
+          />
+          <span class="popup__error avatar-input-error"></span>
+        </label>
+        <button class="popup__button popup__button_disabled" type="submit" disabled>Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_type_remove-card popup_is-animated">
+    <div class="popup__content popup__content_content_form">
+      <button class="popup__close" type="button" aria-label="Закрыть модальное окно"></button>
+      <h2 class="popup__title">Вы уверены?</h2>
+      <form class="popup__form" name="remove-card" novalidate>
+        <button class="popup__button" type="submit">Да</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_type_info popup_is-animated">
+    <div class="popup__content popup__content_content_info">
+      <button class="popup__close" type="button" aria-label="Закрыть модальное окно"></button>
+      <div class="popup__info">
+        <ul class="popup__list popup__list_type_info"></ul>
+        <ul class="popup__list popup__list_type_users"></ul>
+      </div>
+    </div>
+  </div>
+
+<template id="popup-info-definition-template">
+  <li class="popup__list-item" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin-bottom: 12px;">
+    <p class="popup__info-term" style="font-weight: 400; font-size: 14px; color: rgba(0, 0, 0, 0.5); margin: 0;"></p>
+    <p class="popup__info-description" style="font-weight: 500; font-size: 16px; color: #000000; margin: 0;"></p>
+  </li>
+</template>
+
+ <template id="popup-info-user-preview-template">
+  <li class="popup__list-item popup__list-item_type_user" style="display: flex; align-items: center; gap: 8px; list-style: none; margin-bottom: 4px;">
+    <span class="popup__list-item popup__list-item_type_avatar" style="width: 28px; height: 28px; border-radius: 50%; background-size: cover; background-position: center; background-color: #e8e8e8; flex-shrink: 0;"></span>
+    <span class="popup__list-item popup__list-item_type_name" style="font-size: 14px; font-weight: 400; color: #000000;"></span>
+  </li>
+</template>
+
+  
+</body>
+</html>
